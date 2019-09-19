@@ -1,10 +1,11 @@
 # Project One
 Deployed at: https://ehammons.github.io/Project-One/
-<br>Group members:
-    <br>Elise Hammons: https://github.com/EHammons
-    <br>Kristen Stroup: https://github.com/Knwhit20
-    <br>Aaron Phillips: https://github.com/aaronphillips929
-    <br>Christopher Mlinac: https://github.com/cmlinac
+
+## Group members:
+* Elise Hammons: https://github.com/EHammons
+* Kristen Stroup: https://github.com/Knwhit20
+* Aaron Phillips: https://github.com/aaronphillips929
+* Christopher Mlinac: https://github.com/cmlinac
 > Here goes your awesome project description!
 
 ## Table of contents
