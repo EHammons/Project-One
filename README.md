@@ -1,4 +1,4 @@
-# Project One
+# whereabounds app
 Deployed at: https://ehammons.github.io/Project-One/
 
 ## Group members:
@@ -6,7 +6,7 @@ Deployed at: https://ehammons.github.io/Project-One/
 * Kristen Stroup: https://github.com/Knwhit20
 * Aaron Phillips: https://github.com/aaronphillips929
 * Christopher Mlinac: https://github.com/cmlinac
-> Here goes your awesome project description!
+> Web app for displaying user-submitted city details including weather, maps, places and more.
 
 ## Table of contents
 * [General info](#general-info)
@@ -19,15 +19,17 @@ Deployed at: https://ehammons.github.io/Project-One/
 * [Contact](#contact)
 
 ## General info
-Add more general information about project. What the purpose of the project is? Motivation?
+Created for a coding class project, all group members have collaborated to create a working, useful all-in-one app to give a user information about their selected city.
 
 ## Screenshots
 ![Screenshot](./img/Project_One.jpg)
 
 ## Technologies
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* Weatherbit API - v2.0
+* Google Places API
+* Google Maps API
+* jQuery
+* JavaScript
 
 ## Setup
 Describe how to install / setup your local environement / add link to demo version.
