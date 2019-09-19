@@ -10,6 +10,7 @@ Deployed at: https://ehammons.github.io/whereabounds/
 
 ## Table of contents
 * [General info](#general-info)
+* [Tasks](#original-task-breakdown)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
@@ -20,6 +21,12 @@ Deployed at: https://ehammons.github.io/whereabounds/
 
 ## General info
 Created for a coding class project, all group members have collaborated to create a working, useful all-in-one app to give a user information about their selected city.
+
+## Original Task Breakdown
+* Elise: Write jQuery to display API Data
+* Kristen: Implement Weather API
+* Aaron: Implement Google APIs
+* Christopher: Make basic HTML Wireframe
 
 ## Screenshots
 ![Screenshot](./img/Project_One.jpg)
