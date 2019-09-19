@@ -1,5 +1,5 @@
 # whereabounds app
-Deployed at: https://ehammons.github.io/Project-One/
+Deployed at: https://ehammons.github.io/whereabounds/
 
 ## Group members:
 * Elise Hammons: https://github.com/EHammons
