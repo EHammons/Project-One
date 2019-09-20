@@ -57,10 +57,5 @@ function displayWeather() {
 
         });
 
-
-
-
-
-
 }
 displayWeather ()
