@@ -1,4 +1,4 @@
-$(document).on("click", "", function() {
+$(document).on("click", function() {
     var search = "weather";
     console.log(search);
     var queryURL = "weather";
