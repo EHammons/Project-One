@@ -18,7 +18,6 @@
     margin: 0 auto;
 }
 
-
 #search-bar {
     width: 60%;
     margin: 10px 10px 10px auto;
@@ -26,6 +25,18 @@
 
 #search-button {
     margin-right: 15%;
+}
+
+.day-weather {
+    width: 15%;
+    border: 1px solid #777777;
+}
+
+#weather-display {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
 }
 
 /* uncomment to view layout of map and place containers without data */
@@ -48,14 +59,11 @@
     background: blue;
 } */
 
-
-
 @media screen and (max-width: 400px) {
     #search-bar {
         width: 100%;
         margin: 0 auto;
     }
-
     #search-button {
         width: 100%;
         margin: 0 auto;

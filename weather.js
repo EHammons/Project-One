@@ -1,58 +1,58 @@
 
 function displayWeather() {
 
-    var cityName = "Austin" // $("element").val().trim()
+    var cityName = $("#search-bar").val().trim();
+    console.log(cityName);
 
 
-    var queryURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=Raleigh,NC&key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5"
+    // var queryURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=Raleigh,NC&key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5"
    
 
-    // var queryUrl = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + cityName + "&key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5"
-    
+    var queryUrl = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + cityName + "&key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5";
+   
 
         $.ajax({
-            url: queryURL,
+            url: queryUrl,
             method: "GET"
         }).then(function (response) {
             var results = response.data
             console.log(results);
 
+            var weatherDisplay = $("#weather-display")
+            
             for (var i = 0; i < results.length; i++) {
-                var cityWeather = $("<p>");
+                var dayWeather = $("<div>");
+                dayWeather.addClass("card-body")
+                dayWeather.addClass("text-center");
+                dayWeather.addClass("day-weather")
+                dayWeather.addClass("col")
+                
                 var temp = results[i].temp;
-
                 console.log(temp);
-                var weatherDescript = results[i].weather.description;
-                console.log(weatherDescript);
+              
                 var weatherIcon = results[i].weather.icon;
                 console.log(weatherIcon)
-                var wind = results[i].wind_spd;
-                console.log(wind);
-                
-    
-                
-
-                cityWeather.append(temp + " °F  ");
-                
-                cityWeather.append(weatherDescript);
+            
 
                 var icon = $("<img>");
+                
                 icon.attr("src", "https://www.weatherbit.io/static/img/icons/" + weatherIcon + ".png")
-                cityWeather.append(icon);
-               
-                cityWeather.append(wind + " mph" );
+                dayWeather.append(icon);
 
-                // $("#weatherDisplay").append(cityWeather);
+                dayWeather.append(Math.floor(temp) + " °F  ");
+               
+                weatherDisplay.append(dayWeather);
+        
+                
 
                 
             }
 
-
-        
-
-            
-
         });
 
 }
-displayWeather ()
+// displayWeather ()
+$("#search-button").on("click", function(event){
+    event.preventDefault()
+    displayWeather()
+})
