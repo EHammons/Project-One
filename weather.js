@@ -29,13 +29,10 @@ function displayWeather() {
                 var wind = results[i].wind_spd;
                 console.log(wind);
                 
-                // cityWeather.append(temp);
-                // cityWeather.append(weatherDescript);
-                // cityWeather.append(weatherIcon);
-                // cityWeather.append(wind);
+    
                 
 
-                cityWeather.append(temp + " °F");
+                cityWeather.append(temp + " °F  ");
                 
                 cityWeather.append(weatherDescript);
 
@@ -43,9 +40,9 @@ function displayWeather() {
                 icon.attr("src", "https://www.weatherbit.io/static/img/icons/" + weatherIcon + ".png")
                 cityWeather.append(icon);
                
-                cityWeather.append(wind + " mph");
+                cityWeather.append(wind + " mph" );
 
-                $("#weatherDisplay").append(cityWeather);
+                // $("#weatherDisplay").append(cityWeather);
 
                 
             }
