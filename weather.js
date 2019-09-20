@@ -18,21 +18,36 @@ function displayWeather() {
             console.log(results);
 
             for (var i = 0; i < results.length; i++) {
-                var cityWeather = $("<div>");
+                var cityWeather = $("<p>");
                 var temp = results[i].temp;
+
                 console.log(temp);
-                var weather = results[i].weather;
-                console.log(weather)
+                var weatherDescript = results[i].weather.description;
+                console.log(weatherDescript);
+                var weatherIcon = results[i].weather.icon;
+                console.log(weatherIcon)
                 var wind = results[i].wind_spd;
                 console.log(wind);
                 
-                cityWeather.append(temp);
-                cityWeather.append(weather);
-                cityWeather.append(wind);
+                // cityWeather.append(temp);
+                // cityWeather.append(weatherDescript);
+                // cityWeather.append(weatherIcon);
+                // cityWeather.append(wind);
+                
 
-                $("#weatherDisplay").append(temp + "degrees");
-                $("#weatherDisplay").append(weather);
-                $("#weatherDisplay").append(wind + "mph");
+                cityWeather.append(temp + " °F");
+                
+                cityWeather.append(weatherDescript);
+
+                var icon = $("<img>");
+                icon.attr("src", "https://www.weatherbit.io/static/img/icons/" + weatherIcon + ".png")
+                cityWeather.append(icon);
+               
+                cityWeather.append(wind + " mph");
+
+                $("#weatherDisplay").append(cityWeather);
+
+                
             }
 
 
