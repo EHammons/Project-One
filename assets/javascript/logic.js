@@ -1,10 +1,12 @@
-$(document).on("click", function() {
-    var search = "weather";
-    console.log(search);
-    var queryURL = "weather";
+$("#search-button").on("click", function() {
+    var userInput = "city";
+    console.log(userInput);
+    var googleQueryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + userInput + "&radius=1500&type=restaurant&keyword=cruise&key=" + googleAPIKey;
+    var googleAPIKey = "AIzaSyADAEzhWG-Zr1lJeCo5mJmk6Oh_JPIDjUI";
+    $("#city-name").text(userInput);
 
     $.ajax({
-        url: queryURL,
+        url: googleQueryURL,
         method: "GET"
     })
         .then(function(response) {
