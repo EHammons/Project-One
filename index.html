@@ -12,20 +12,64 @@
         crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         crossorigin="anonymous"></script>
-    <title>Project 1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js">\</script>
+  <title>whereabounds</title>
 </head>
 
 <body>
-    <h1>Project 1</h1>
+    <header>
+        <!-- Header -->
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">whereabound</a>
+            <div class="container-fluid-nav text-center" id="city-name-container">
+                <span id="city-name">Austin</span>
+            </div>
+        </nav>
+    </header>
+    <!-- .container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form id="search-bar-form" class="form-inline">
+                    <input id="search-bar" class="form-control mc-md-2" type="search" placeholder="Austin" aria-label="Search">
+                    <button id="search-button" class="btn btn-outline-primary my-2 my-md-0" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                    <div id="weather-display" class="card">
+                        <div class="card-body">
 
-    <!-- <h2 id="weatherDisplay">Weather -->
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                
+                <div id="map-display">
+                    <!-- Map Goes Here -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="place-list" class="card">
+                    <div class="card-body">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+     <!-- <h2 id="weatherDisplay">Weather -->
     <!-- </h2> -->
-
-
+    </div>
+    <script src="logic.js"></script>
     <script type="text/javascript" src="weather.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js">\</script>
-
 </body>
 
 </html>
