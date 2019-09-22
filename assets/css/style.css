@@ -38,6 +38,10 @@
     flex-direction: row;
     height: 100%;
 }
+img {
+    width: 100%;
+}
+
 
 /* uncomment to view layout of map and place containers without data */
 
