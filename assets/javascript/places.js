@@ -22,10 +22,7 @@ function findPlaces(cityCoords) {
             console.log(response);
             // console.log(JSON.stringify(response.results[0]));
 
-            var resultsLength = 5;
-            if (results.length < 5) {
-              resultsLength = results.length
-            }
+            var resultsLength = maxPlaces(results);
             for (var i = 0; i < resultsLength; i++) {
             //   console.log(results[i].name);
             //   console.log(results[i].rating);
@@ -40,7 +37,8 @@ function findPlaces(cityCoords) {
               div.append(place);
               div.append(ratingPrice);
               $("#place-list").append(div);
-            }              
+            }        
+            pinPlaces(results);      
       });
   };
 
