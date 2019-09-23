@@ -14,7 +14,7 @@ function displayWeather() {
         
 
         var weatherDisplay = $("#weather-display")
-            
+        weatherDisplay.empty();
 
         for (var i = 0; i < results.length; i++) {
             var dayWeather = $("<div>");
