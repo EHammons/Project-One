@@ -9,6 +9,7 @@ Deployed at: https://ehammons.github.io/whereabounds/
 > Web app for displaying user-submitted city details including weather, maps, places and more.
 
 ## Table of contents
+* [Group Members](#group-members)
 * [General info](#general-info)
 * [Tasks](#original-task-breakdown)
 * [Screenshots](#screenshots)
@@ -39,7 +40,7 @@ Created for a coding class project, all group members have collaborated to creat
 * JavaScript
 
 ## Setup
-Describe how to install / setup your local environement / add link to demo version.
+Deployed at: https://ehammons.github.io/whereabounds/
 
 ## Code Examples
 Show examples of usage:
@@ -47,19 +48,15 @@ Show examples of usage:
 
 ## Features
 List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
-
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+* User input city results in:
+* Five day weather forecast
+* FIve places to visit
 
 ## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+Project is: _finished_ and submitted for Project 1.
 
 ## Inspiration
-Add here credits. Project inspired by..., based on...
+Project created for The Coding Bootcamp at UT Austin.
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by [Group Members](#group-members)
