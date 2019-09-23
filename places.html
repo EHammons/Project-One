@@ -57,7 +57,7 @@
             $("#place-list").empty();
               // Storing an array of results in the results variable
               var results = response.results;
-              // console.log(results);
+              console.log(results);
               // console.log(JSON.stringify(response.results[0]));
 
               var resultsLength = 5;
@@ -69,10 +69,11 @@
                 console.log(results[i].rating);
                 // TODO: update formatting for index.html
                 var place = $("<p>").text(results[i].name); 
-                var rating = $("<p>").text(results[i].rating);
+                var ratingAndPrice = $("<p>").text(results[i].rating + " " + results[i].price_level);
+                ratingAndPrice.addClass("rating-price");
                 var div = $("<div>");
                 div.append(place);
-                div.append(rating);
+                div.append(ratingAndPrice);
                 $("#place-list").append(div);
               }              
         });
