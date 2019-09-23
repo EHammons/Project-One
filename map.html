@@ -58,7 +58,6 @@
                 map: map,
                 position: place.geometry.location
             });
-            console.log("Hello")
 
             google.maps.event.addListener(marker, "click", function() {
                 infowindow.setContent(place.name);
