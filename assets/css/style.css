@@ -45,6 +45,15 @@ img {
 
 
 
+img {
+    width: 100%;
+}
+
+#map {
+    height: 500px;
+}
+
+
 /* uncomment to view layout of map and place containers without data */
 
 /* #weather-display {
