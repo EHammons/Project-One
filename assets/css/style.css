@@ -28,6 +28,9 @@ img {
     width: 60%;
     margin: 10px 10px 10px auto;
 }
+#dropdownMenuButton {
+    width: 100%;
+}
 
 #search-button {
     margin-right: 15%;
