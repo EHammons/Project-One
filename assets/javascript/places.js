@@ -1,10 +1,14 @@
 function findPlaces(cityCoords) {
     // In this case, the "this" keyword refers to the button that was clicked
-    // TODO: update to use search-bar from index.html
+
     $("#search-bar").empty();
     var cityCoords = cityCoords;
-    var type = "restaurant"; // TODO: plug into drop down
-
+    var type = $("#dropdownMenuButton").val();
+    console.log(type);
+    // default to restaurant
+    if (type === "") {
+        type = "restaurant";
+    }
     var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + cityCoords + "&radius=1500&type=" + type + "&key=AIzaSyADAEzhWG-Zr1lJeCo5mJmk6Oh_JPIDjUI"
     
     console.log(queryURL);
@@ -44,6 +48,7 @@ function findPlaces(cityCoords) {
       });
   };
 
+  // convert our price value to a dolar amount, $/$$/$$$ etc
   function priceToDollar(price) {
       var prices = "";
       for (var i = 0; i < price; i++) {
@@ -51,3 +56,13 @@ function findPlaces(cityCoords) {
       }
       return prices;
   }
+
+// dropdown listener for category
+$(document).ready(function() { 
+  $("#dropdown-list a").on("click", function() {
+      var val = $(this).attr("value");
+      var text = $(this).text();
+      $("#dropdownMenuButton").val(val);
+      $("#dropdownMenuButton").text(text);
+  })
+});
