@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Places API</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <button latlong="29.749907, -95.358421">Houston</button>
+  <button latlong="29.424349, -98.491142">San Antonio</button>
+  <button latlong="30.274722, -97.740556">Austin</button>
+  <button latlong="32.775150, -96.809097">Dallas</button>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <br>
+
+      <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
+      <div class="card">
+
+        <!-- card Heading for the retrieved articles box -->
+        <div class="card-header">
+          <strong>
+            <i class="fa fa-table"></i> Places to Visit</strong>
+        </div>
+
+        <!-- This main card will hold each of the resulting articles -->
+        <div class="card-body" id="place-list">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // Event listener for all button elements
+    $("button").on("click", function () {
+      // In this case, the "this" keyword refers to the button that was clicked
+      // TODO: update to use search-bar from index.html
+      var cityCoords = $(this).attr("latlong");
+      var type = "restaurant";
+
+      var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + cityCoords + "&radius=1500&type=" + type + "&key=AIzaSyADAEzhWG-Zr1lJeCo5mJmk6Oh_JPIDjUI"
+      
+
+      // Performing our AJAX GET request
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+        // After the data comes back from the API
+        .then(function (response) {
+            $("#place-list").empty();
+              // Storing an array of results in the results variable
+              var results = response.results;
+              // console.log(results);
+              // console.log(JSON.stringify(response.results[0]));
+
+              var resultsLength = 5;
+              if (results.length < 5) {
+                resultsLength = results.length
+              }
+              for (var i = 0; i < resultsLength; i++) {
+                console.log(results[i].name);
+                console.log(results[i].rating);
+                // TODO: update formatting for index.html
+                var place = $("<p>").text(results[i].name); 
+                var rating = $("<p>").text(results[i].rating);
+                var div = $("<div>");
+                div.append(place);
+                div.append(rating);
+                $("#place-list").append(div);
+              }              
+        });
+    });
+  </script>
+</body>
+
+</html>
