@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Places API</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <button latlong="29.749907, -95.358421">Houston</button>
+  <button latlong="29.424349, -98.491142">San Antonio</button>
+  <button latlong="30.274722, -97.740556">Austin</button>
+  <button latlong="32.775150, -96.809097">Dallas</button>
+
+
+  <div class="row">
+    <div class="col-sm-12">
+      <br>
+
+      <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
+      <div class="card">
+
+        <!-- card Heading for the retrieved articles box -->
+        <div class="card-header">
+          <strong>
+            <i class="fa fa-table"></i> Places to Visit</strong>
+        </div>
+
+        <!-- This main card will hold each of the resulting articles -->
+        <div class="card-body" id="rest">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // Event listener for all button elements
+    $("button").on("click", function () {
+      // In this case, the "this" keyword refers to the button that was clicked
+      var cityInput = $(this).attr("latlong");
+      // var interestInput = $(this).attr("interest")
+
+      var restaurantURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + cityInput + "&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyADAEzhWG-Zr1lJeCo5mJmk6Oh_JPIDjUI"
+      var museumURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + cityInput + "&radius=1500&type=museum&keyword=cruise&key=AIzaSyADAEzhWG-Zr1lJeCo5mJmk6Oh_JPIDjUI"
+
+      // Performing our AJAX GET request
+      $.ajax({
+        url: restaurantURL,
+        method: "GET"
+      })
+        // After the data comes back from the API
+        .then(function (restaurantResponse) {
+
+          $.ajax({
+            url: museumURL,
+            method: "GET"
+          })
+            // After the data comes back from the API
+            .then(function (museumResponse) {
+
+              // Storing an array of results in the results variable
+              var restaurantResults = restaurantResponse.results;
+              
+
+
+              // console.log(results);
+              // console.log(JSON.stringify(response.results[0]));
+
+              for (var i = 0; i < restaurantResults.length; i++) {
+                console.log(restaurantResults[i].name);
+                console.log(restaurantResults[i].rating);
+                var restaurant = $("<p>").text(restaurantResults[i].name);
+                var rating = $("<p>").text(restaurantResults[i].rating);
+                var div = $("<div>");
+                //div = <div></div>
+                div.append(restaurant);
+                div.append(rating);
+                $("#rest").append(div);
+
+              }
+
+              console.log("/////////////////////////////")
+              
+              var museumResults = museumResponse.results;
+
+
+              // console.log(results);
+              // console.log(JSON.stringify(response.results[0]));
+
+              for (var i = 0; i < museumResults.length; i++) {
+                console.log(museumResults[i].name);
+                console.log(museumResults[i].rating);
+                var museums = $("<p>").text(museumResults[i].name);
+                var museumRating = $("<p>").text(museumResults[i].rating);
+                var div2 = $("<div>");
+                div.append(museums);
+                div.append(museumRating);
+                $("#rest").append(div2);
+              }
+
+
+              // var name = $("name");
+              // $(name).attr("src")
+              // $("body").append(name);
+
+              // Display results -> name
+              // Display results -> rating
+              // 
+
+
+            });
+        });
+    });
+  </script>
+</body>
+
+</html>
