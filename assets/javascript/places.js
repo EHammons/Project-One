@@ -31,17 +31,33 @@ function findPlaces(cityCoords) {
             //   console.log(results[i].name);
             //   console.log(results[i].rating);
               // TODO: update formatting for index.html
-              var place = $("<p>").text(results[i].name); 
+              var nameDiv = $("<div>");
+              var label = $("<span>");
+              label.addClass("label");
+              label.text(String(i + 1) + ". ");
+              var place = $("<span>").text(results[i].name); 
               place.addClass("place-name");
-              var ratingPrice = $("<p>").text(results[i].rating + " " + priceToDollar(results[i].price_level));
-              ratingPrice.addClass("place-rating-price");
-              var div = $("<div>");
-              div.addClass("place-info");
-              div.addClass("card-body");
-              div.append(place);
-              div.append(ratingPrice);
-              $("#place-list").append(div);
+              nameDiv.append(label, place);
+              var ratingPriceDiv = $("<div>");
+              if (results[i].rating !== undefined) {
+                var rating = $("<span>").text(results[i].rating + " ");
+                rating.addClass("rating");
+                ratingPriceDiv.append(rating);
+              }
+              if (results[i].price_level !== undefined) {
+                  var price = $("<span>").text(priceToDollar(results[i].price_level));
+                  price.addClass("price");
+                  ratingPriceDiv.append(price);
+              }
+              var placeDiv = $("<div>");
+              placeDiv.attr("id", "place-" + (i +1));
+              placeDiv.addClass("place-info");
+              placeDiv.addClass("card-body");
+              placeDiv.append(nameDiv);
+              placeDiv.append(ratingPriceDiv);
+              $("#place-list").append(placeDiv);
             }        
+            
             pinPlaces(results);      
       });
   };

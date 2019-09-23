@@ -52,19 +52,25 @@ function displayCity(lat, lng) {
 function pinPlaces(places) {
     var placesLength = maxPlaces(places);
     for (var i = 0; i < placesLength; i++) {
-        createMarker(places[i]);
+        createMarker(places[i], i + 1);
     }
 }
 
-function createMarker(place) {
+function createMarker(place, number) {
     var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location
     });
 
+    marker.setLabel(String(number));
+
     google.maps.event.addListener(marker, "click", function() {
         infowindow.setContent(place.name);
         infowindow.open(map, this);
+        map.setCenter(marker.getPosition());
+        var label = marker.label;
+        // TODO: delete all active classes on labels
+        $("#place-" + label).addClass("active");   
     });
 }
 
