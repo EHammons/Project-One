@@ -5,9 +5,6 @@ function displayWeather() {
     console.log(cityName);
 
 
-    // var queryURL = "https://api.weatherbit.io/v2.0/forecast/daily?city=Raleigh,NC&key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5"
-
-
     var queryUrl = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + cityName + "&key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5";
 
 
