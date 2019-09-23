@@ -3,8 +3,17 @@ function displayWeather() {
 
     var cityName = $("#search-bar").val().trim();
 
-        function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
+    function capitalizeFirstLetter(string) {
+        var stringArr = string.split(" ");
+        var result = "";
+        for (var i = 0; i < stringArr.length; i++) {
+            console.log(stringArr[i]);
+            var word = stringArr[i].charAt(0).toUpperCase() + stringArr[i].slice(1);
+            console.log(word);
+            result += word + " ";
+            console.log(result);
+        }
+        return result;
     }
     cityName = capitalizeFirstLetter(cityName);
     
