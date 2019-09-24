@@ -1,3 +1,5 @@
+var apiKey = "AIzaSyADAEzhWG-Zr1lJeCo5mJmk6Oh_JPIDjUI"
+
 function findPlaces(cityCoords) {
     // In this case, the "this" keyword refers to the button that was clicked
 
@@ -9,7 +11,7 @@ function findPlaces(cityCoords) {
     if (type === "") {
         type = "restaurant";
     }
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + cityCoords + "&radius=1500&type=" + type + "&key=AIzaSyADAEzhWG-Zr1lJeCo5mJmk6Oh_JPIDjUI"
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + cityCoords + "&radius=1500&type=" + type + "&key=" + apiKey;
     
     console.log(queryURL);
 
@@ -59,12 +61,22 @@ function findPlaces(cityCoords) {
               $("#place-list").append(placeDiv);
             }        
             pinPlaces(results);  
+            
+            // add the url of each place given its placeID. this requires a separate api call
             addURLs(placeIDs);    
       });
   };
 
-  addURLs(placeIDs) {
-      
+  function addURLs(placeIDs) {
+      for (var j = 0; j < maxPlaces(placeIDs); j++)
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeIDs[j] + "&key=" + apiKey;
+
+        $.ajax({
+            method: "GET",
+            url: queryURL
+        }).then( function(response) {
+            console.log(response.result.website);
+        });
   }
 
   // convert our price value to a dolar amount, $/$$/$$$ etc
