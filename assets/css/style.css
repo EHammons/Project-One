@@ -5,7 +5,12 @@ h1 {
 body {
     font-family: 'Lexend Deca', sans-serif;
 }
-
+h5 {
+    text-shadow: 2px 2px 4px #000000;
+}
+.carousel-caption {
+    text-shadow: 2px 2px 4px #000000;
+}
 img {
     width: 100%;
 }
@@ -80,6 +85,9 @@ img {
 
 #map {
     height: 300px;
+}
+.oaksjglksad {
+
 }
 
 
