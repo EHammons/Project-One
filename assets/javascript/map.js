@@ -2,6 +2,7 @@ var map;
 var service;
 var infowindow;
 var geocoder;
+var bounds;
 
 let MAX_PLACES = 5;
 
@@ -48,6 +49,7 @@ function displayCity(lat, lng) {
     var cityLat = parseFloat(lat);
     var cityLng = parseFloat(lng);
     var city = new google.maps.LatLng(cityLat, cityLng);
+    bounds = new google.maps.LatLngBounds();
     map = new google.maps.Map(document.getElementById("map"), {
         center: city,
         zoom: 14.5,
@@ -70,6 +72,8 @@ function createMarker(place, number) {
         position: place.geometry.location,
         label: {text: String(number), color: "white"}
     });
+    bounds.extend(marker.position);
+    map.fitBounds(bounds);
 
     google.maps.event.addListener(marker, "click", function() {
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.vicinity + '<br>Rating: ' + place.rating + '</div>');
