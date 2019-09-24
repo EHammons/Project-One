@@ -1,3 +1,5 @@
+var apiKey = "AIzaSyADAEzhWG-Zr1lJeCo5mJmk6Oh_JPIDjUI"
+
 function findPlaces(cityCoords) {
     // In this case, the "this" keyword refers to the button that was clicked
 
@@ -9,7 +11,7 @@ function findPlaces(cityCoords) {
     if (type === "") {
         type = "restaurant";
     }
-    var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + cityCoords + "&radius=1500&type=" + type + "&key=AIzaSyADAEzhWG-Zr1lJeCo5mJmk6Oh_JPIDjUI"
+    var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + cityCoords + "&radius=1500&type=" + type + "&key=" + apiKey;
     
     console.log(queryURL);
 
@@ -25,18 +27,20 @@ function findPlaces(cityCoords) {
             var results = response.results;
             console.log(response);
             // console.log(JSON.stringify(response.results[0]));
-
+            var placeIDs = {};
             var resultsLength = maxPlaces(results);
             for (var i = 0; i < resultsLength; i++) {
             //   console.log(results[i].name);
             //   console.log(results[i].rating);
               // TODO: update formatting for index.html
+              placeIDs[i + 1] = results[i].place_id;
               var nameDiv = $("<div>");
               var label = $("<span>");
               label.addClass("label");
               label.text(String(i + 1) + ". ");
-              var place = $("<span>").text(results[i].name); 
+              var place = $("<a>").text(results[i].name); 
               place.addClass("place-name");
+              place.attr("id", "place-name-" + (i + 1));
               nameDiv.append(label, place);
               var ratingPriceDiv = $("<div>");
               if (results[i].rating !== undefined) {
@@ -57,10 +61,34 @@ function findPlaces(cityCoords) {
               placeDiv.append(ratingPriceDiv);
               $("#place-list").append(placeDiv);
             }        
+            pinPlaces(results);  
             
-            pinPlaces(results);      
+            // add the url of each place given its placeID. this requires a separate api call
+            addURLs(placeIDs);    
       });
   };
+
+  
+  function addURLs(placeIDs) {
+      // loop through our places
+      for (var j = 1; j <= MAX_PLACES; j++) {
+        // get the query string with the place ID
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeIDs[j] + "&key=" + apiKey;
+        // clojure to lock in the value of j when we make the .then call
+        (function(j) {
+            $.ajax({
+                method: "GET",
+                url: queryURL
+            }).then( function(response) {
+                // set the href of the place to its site
+                var site = response.result.website;
+                var placeName = $("#place-name-" + j);
+                placeName.attr("href", site);
+                
+            });
+        })(j);
+      }
+  }
 
   // convert our price value to a dolar amount, $/$$/$$$ etc
   function priceToDollar(price) {
