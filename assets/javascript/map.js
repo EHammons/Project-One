@@ -13,6 +13,12 @@ function init() {
     var city = new google.maps.LatLng(cityLat, cityLng);
     infowindow = new google.maps.InfoWindow();
     map = new google.maps.Map(document.getElementById("map"), {
+        mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP]
+        },
+        disableDefaultUI: true,
+        zoomControl: true,
         center: city,
         zoom: 14.5
     });
@@ -52,19 +58,24 @@ function displayCity(lat, lng) {
 function pinPlaces(places) {
     var placesLength = maxPlaces(places);
     for (var i = 0; i < placesLength; i++) {
-        createMarker(places[i]);
+        createMarker(places[i], i + 1);
     }
 }
 
-function createMarker(place) {
+function createMarker(place, number) {
     var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location
     });
 
+    marker.setLabel(String(number));
+
     google.maps.event.addListener(marker, "click", function() {
         infowindow.setContent(place.name);
         infowindow.open(map, this);
+        map.setCenter(marker.getPosition());
+        var label = marker.label;
+        selectPlace(label);
     });
 }
 
@@ -79,4 +90,20 @@ function maxPlaces(places) {
         return places.length;
     }
     return MAX_PLACES;
+}
+
+function selectPlace(placeNumber) {
+    clearPlacesBackground();
+    $("#place-" + placeNumber).addClass("selected-place");  
+}
+
+function clearPlacesBackground() {
+    
+    for (var i = 1; i <= MAX_PLACES; i++) {
+        var selectedPlace = $("#place-" + i);
+        if (selectedPlace !== undefined) {
+            console.log("removed " + selectedPlace);
+            selectedPlace.removeClass("selected-place");
+        }
+    }
 }
