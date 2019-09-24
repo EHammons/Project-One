@@ -1,7 +1,12 @@
 
-function displayWeather() {
+function displayWeather(cityName) {
 
-    var cityName = $("#search-bar").val().trim();
+    $("#weather-display").empty();
+
+    var cityName;
+    if (cityName === undefined) {
+        cityName = $("#search-bar").val().trim();
+    }
 
     function capitalizeFirstLetter(string) {
         var stringArr = string.split(" ");
@@ -32,16 +37,16 @@ function displayWeather() {
         console.log(results)
         
 
-        var weatherDisplay = $("#weather-display")
+        var weatherDisplay = $("#weather-display");
             
 
         for (var i = 0; i < results.length; i++) {
             var dayWeather = $("<div>");
             var day = results[i].datetime;
-            dayWeather.addClass("card-body")
+            dayWeather.addClass("card-body");
             dayWeather.addClass("text-center");
-            dayWeather.addClass("day-weather")
-            dayWeather.addClass("col")
+            dayWeather.addClass("day-weather");
+            dayWeather.addClass("col");
 
 
             var maxTemp = results[i].max_temp;
@@ -72,8 +77,6 @@ function displayWeather() {
 }
 
 $("#search-button").on("click", function (event) {
-    $("#weather-display").empty()
     event.preventDefault();
-    
     displayWeather();
-})
+});

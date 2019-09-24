@@ -2,8 +2,14 @@ var map;
 var service;
 var infowindow;
 var geocoder;
+var bounds;
 
 let MAX_PLACES = 5;
+
+function initMap() {
+    init();
+    // searchCity(randomCity());
+}
 
 function init() {
     geocoder = new google.maps.Geocoder;
@@ -21,7 +27,7 @@ function init() {
         zoomControl: true,
         center: city,
         zoom: 14.5
-    });
+    });  
 }
 
 function geocodeLatLng(address) {
@@ -48,9 +54,12 @@ function displayCity(lat, lng) {
     var cityLat = parseFloat(lat);
     var cityLng = parseFloat(lng);
     var city = new google.maps.LatLng(cityLat, cityLng);
+    bounds = new google.maps.LatLngBounds();
     map = new google.maps.Map(document.getElementById("map"), {
         center: city,
-        zoom: 14.5
+        zoom: 14.5,
+        disableDefaultUI: true,
+        zoomControl: true,
     });
 }
 
@@ -65,18 +74,24 @@ function pinPlaces(places) {
 function createMarker(place, number) {
     var marker = new google.maps.Marker({
         map: map,
-        position: place.geometry.location
+        position: place.geometry.location,
+        label: {text: String(number), color: "white"}
     });
-
-    marker.setLabel(String(number));
+    bounds.extend(marker.position);
+    map.fitBounds(bounds);
 
     google.maps.event.addListener(marker, "click", function() {
-        infowindow.setContent(place.name);
+        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.vicinity + '</div>');
         infowindow.open(map, this);
         map.setCenter(marker.getPosition());
-        var label = marker.label;
+        var label = marker.label.text;
         selectPlace(label);
     });
+}
+
+function searchCity(cityName) {
+    displayWeather(cityName);
+    geocodeLatLng(cityName);
 }
 
 $("#search-button").on("click", function(event) {
@@ -102,7 +117,6 @@ function clearPlacesBackground() {
     for (var i = 1; i <= MAX_PLACES; i++) {
         var selectedPlace = $("#place-" + i);
         if (selectedPlace !== undefined) {
-            console.log("removed " + selectedPlace);
             selectedPlace.removeClass("selected-place");
         }
     }

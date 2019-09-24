@@ -42,24 +42,33 @@ function findPlaces(cityCoords) {
               place.addClass("place-name");
               place.attr("id", "place-name-" + (i + 1));
               nameDiv.append(label, place);
-              var ratingPriceDiv = $("<div>");
+              var ratingDiv = $("<div>");
               if (results[i].rating !== undefined) {
                 var rating = $("<span>").text(results[i].rating + " ");
                 rating.addClass("rating");
                 ratingPriceDiv.append(rating);
                 
               }
+              var priceDiv = $("<div>");
               if (results[i].price_level !== undefined) {
                   var price = $("<span>").text(priceToDollar(results[i].price_level));
                   price.addClass("price");
-                  ratingPriceDiv.append(price);
+                  priceDiv.append(price);
               }
               var placeDiv = $("<div>");
+              var row = $("<div class='row'>");
+              var nameCol = $("<div class='col-md-8'>");
+              nameCol.append(nameDiv);
+              row.append(nameCol);
+              var ratingCol = $("<div class='col-md-2'>");
+              ratingCol.append(ratingDiv);
+              row.append(ratingCol);
+              var priceCol = $("<div class='col-md-2'>");
+              priceCol.append(priceDiv);
+              row.append(priceCol);
               placeDiv.attr("id", "place-" + (i +1));
               placeDiv.addClass("place-info");
-              placeDiv.addClass("card-body");
-              placeDiv.append(nameDiv);
-              placeDiv.append(ratingPriceDiv);
+              placeDiv.append(row);
               $("#place-list").append(placeDiv);
             }        
             pinPlaces(results);  
@@ -85,6 +94,7 @@ function findPlaces(cityCoords) {
                 var site = response.result.website;
                 var placeName = $("#place-name-" + j);
                 placeName.attr("href", site);
+                placeName.attr("target", "_blank");
                 
             });
         })(j);
@@ -107,5 +117,24 @@ $(document).ready(function() {
       var text = $(this).text();
       $("#dropdownMenuButton").val(val);
       $("#dropdownMenuButton").text(text);
-  })
+  });
+
+  $(".city-carousel").on("click", function(event) {
+    console.log($(this));
+    searchCity( $(this).attr("city-name") );
+  });
+
+  
+});
+
+
+// pick a random city to display on page load
+function randomCity() {
+    var cities = ["Hong Kong", "Paris", "Sydney", "Tokyo", "New York City"];
+
+    return cities[Math.floor(Math.random() * 5)];
+}
+
+$(window).on("load", function() {
+    searchCity(randomCity());
 });
