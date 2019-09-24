@@ -84,6 +84,11 @@ function createMarker(place, number) {
     });
 }
 
+function searchCity(cityName) {
+    displayWeather(cityName);
+    geocodeLatLng(cityName);
+}
+
 $("#search-button").on("click", function(event) {
     event.preventDefault();
     var cityName = $("#search-bar").val();

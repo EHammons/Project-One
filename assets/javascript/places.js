@@ -106,5 +106,20 @@ $(document).ready(function() {
       var text = $(this).text();
       $("#dropdownMenuButton").val(val);
       $("#dropdownMenuButton").text(text);
-  })
+  });
+
+  $(".city-carousel").on("click", function(event) {
+    console.log($(this));
+    searchCity( $(this).attr("city-name") );
+  });
+
+  searchCity(randomCity());
 });
+
+
+// pick a random city to display on page load
+function randomCity() {
+    var cities = ["Hong Kong", "Paris", "Sydney", "Tokyo", "New York City"];
+
+    return cities[Math.floor(Math.random() * 5)];
+}
