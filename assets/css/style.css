@@ -82,6 +82,10 @@ img {
     height: 300px;
 }
 
+.selected-place {
+    background-color: #e9ecef;
+}
+
 
 /* uncomment to view layout of map and place containers without data */
 
