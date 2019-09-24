@@ -41,35 +41,35 @@
                 <div class="carousel-item active">
                   <img src="assets/images/paris.jpg" class="d-block w-100" alt="...">
                   <div class="carousel-caption d-none d-md-block">
-                    <h5>Explore Paris</h5>
+                    <h2 class="city-carousel" city-name="Paris">Explore Paris</h2>
                     <p>Paris offers monument-lined boulevards, museums, classical bistros, boutiques and creative wine bars.</p>
                   </div>
             </div>
             <div class="carousel-item">
                   <img src="assets/images/hk.jpg" class="d-block w-100" alt="...">
                   <div class="carousel-caption d-none d-md-block">
-                    <h5>Explore Hong Kong</h5>
+                    <h2 class="city-carousel" city-name="Hong Kong">Explore Hong Kong</h2>
                     <p>Hong Kong welcomes with an iconic skyline, a legendary kitchen and colorful traditions that thrive.</p>
                   </div>
             </div>
             <div class="carousel-item">
                   <img src="assets/images/nyc.jpg" class="d-block w-100" alt="...">
                   <div class="carousel-caption d-none d-md-block">
-                    <h5>Explore New York City</h5>
+                    <h2 class="city-carousel" city-name="New York City">Explore New York City</h2>
                     <p>Epicenter of the arts. Architectural darling. Dining and shopping capital. Trendsetter. New York wears many crowns, and waits for you!</p>
                   </div>
                 </div>
             <div class="carousel-item">
                     <img src="assets/images/tokyo.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Explore Tokyo</h5>
+                        <h2 class="city-carousel" city-name="Tokyo">Explore Tokyo</h2>
                         <p>Yoking past and future, Tokyo dazzles with its traditional culture and passion for everything new.</p>
                     </div>
                 </div>
             <div class="carousel-item">
                     <img src="assets/images/sydney.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Explore Sydney</h5>
+                        <h2 class="city-carousel" city-name="Sydney">Explore Sydney</h2>
                         <p>Sydney, spectacularly draped around its glorious harbour and beaches, has visual wow factor like few other cities.</p>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <form id="search-bar-form" class="form-inline">      
-                    <input id="search-bar" class="form-control mc-md-2" type="search" placeholder="Austin" aria-label="Search">
+                    <input id="search-bar" class="form-control mc-md-2" type="search" placeholder="Enter a City" aria-label="Search">
                     <button id="search-button" class="btn btn-outline-primary my-2 my-md-0" type="submit">Search</button>
                 </form>
             </div>
@@ -135,7 +135,7 @@
         <div class ="container">
         
             <div class="container-fluid-nav text-center" id="city-name-container">
-                <span id="city-name">Austin</span>
+                <span id="city-name"></span>
              </div>
              <div class="row" id="weather">
                     <div class="col-md-2"></div>
@@ -162,8 +162,10 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <div id="place-list" class="card text-left">
-                </div>
+                <div class="card card-header">Places</div>
+                    <div id="place-list" class="card text-left">
+                    </div>
+                
             <div class="col-md-2"></div>
             </div>
         </div>

@@ -76,12 +76,17 @@ function createMarker(place, number) {
     map.fitBounds(bounds);
 
     google.maps.event.addListener(marker, "click", function() {
-        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.vicinity + '<br>Rating: ' + place.rating + '</div>');
+        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.vicinity + '</div>');
         infowindow.open(map, this);
         map.setCenter(marker.getPosition());
         var label = marker.label.text;
         selectPlace(label);
     });
+}
+
+function searchCity(cityName) {
+    displayWeather(cityName);
+    geocodeLatLng(cityName);
 }
 
 $("#search-button").on("click", function(event) {
