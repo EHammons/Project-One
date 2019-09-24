@@ -1,23 +1,35 @@
+h1 {
+    font-family: 'Prata', serif;
+}
+
 body {
     font-family: 'Lexend Deca', sans-serif;
 }
+
 img {
     width: 100%;
 }
+
 .navbar {
     color: #FFFFFF;
 }
 
 .container {
-    margin: 10px auto;
+    margin: auto;
 }
 
 #city-name-container {
-    color: #FFFFFF;
-    margin: 0 auto;
-    font-size: 25px;
-    position: relative;
-    right: 5%;
+    color: black;
+    margin-top: 10px;
+    margin: 10 auto; 
+    font-size: 30px;
+    font-family: 'Prata', serif;
+}
+
+section {
+    background-color: #e9ecef;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #search-bar-form {
@@ -25,15 +37,16 @@ img {
 }
 
 #search-bar {
-    width: 60%;
-    margin: 10px 10px 10px auto;
-}
-#dropdownMenuButton {
-    width: 100%;
+    width: 80%;
 }
 
 #search-button {
-    margin-right: 15%;
+    width: 20%;
+    background-color: white;
+}
+#dropdownMenuButton {
+    margin-top: 10px;
+    width: 100%;
 }
 
 .day-weather {
@@ -48,15 +61,25 @@ img {
     height: 100%;
 }
 
+#weather {
+    margin-top: 10px;
+}
 
+#map-display {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
+#place-list {
+    margin-bottom: 10px;
+}
 
 img {
     width: 100%;
 }
 
 #map {
-    height: 500px;
+    height: 300px;
 }
 
 
@@ -79,7 +102,7 @@ img {
     height: 500px;
     background: blue;
 } */
-
+/* 
 @media screen and (max-width: 400px) {
     #search-bar {
         width: 100%;
@@ -89,4 +112,4 @@ img {
         width: 100%;
         margin: 0 auto;
     }
-}
+}  */
