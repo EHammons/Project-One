@@ -6,6 +6,11 @@ var bounds;
 
 let MAX_PLACES = 5;
 
+function initMap() {
+    init();
+    // searchCity(randomCity());
+}
+
 function init() {
     geocoder = new google.maps.Geocoder;
     // TODO: change to selected preview city instead of Austin
@@ -22,7 +27,7 @@ function init() {
         zoomControl: true,
         center: city,
         zoom: 14.5
-    });
+    });  
 }
 
 function geocodeLatLng(address) {
@@ -112,7 +117,6 @@ function clearPlacesBackground() {
     for (var i = 1; i <= MAX_PLACES; i++) {
         var selectedPlace = $("#place-" + i);
         if (selectedPlace !== undefined) {
-            console.log("removed " + selectedPlace);
             selectedPlace.removeClass("selected-place");
         }
     }

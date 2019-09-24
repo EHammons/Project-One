@@ -122,7 +122,7 @@ $(document).ready(function() {
     searchCity( $(this).attr("city-name") );
   });
 
-  searchCity(randomCity());
+  
 });
 
 
@@ -132,3 +132,7 @@ function randomCity() {
 
     return cities[Math.floor(Math.random() * 5)];
 }
+
+$(window).on("load", function() {
+    searchCity(randomCity());
+});
