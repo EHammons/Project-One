@@ -66,9 +66,8 @@ function createMarker(place, number) {
     var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location,
-        label: {text: String(number), color: "white"}
     });
-
+    marker.setLabel(String(number));
 
     google.maps.event.addListener(marker, "click", function() {
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.vicinity + '<br>Rating: ' + place.rating + '</div>');
