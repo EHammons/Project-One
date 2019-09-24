@@ -3,9 +3,17 @@ function displayWeather() {
 
     var cityName = $("#search-bar").val().trim();
 
-
     function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
+        var stringArr = string.split(" ");
+        var result = "";
+        for (var i = 0; i < stringArr.length; i++) {
+            console.log(stringArr[i]);
+            var word = stringArr[i].charAt(0).toUpperCase() + stringArr[i].slice(1);
+            console.log(word);
+            result += word + " ";
+            console.log(result);
+        }
+        return result;
     }
     cityName = capitalizeFirstLetter(cityName);
     
@@ -20,6 +28,7 @@ function displayWeather() {
         method: "GET"
     }).then(function (response) {
         var results = response.data;
+        console.log(results)
         
 
         var weatherDisplay = $("#weather-display")
@@ -34,13 +43,14 @@ function displayWeather() {
             dayWeather.addClass("col")
 
 
-            var temp = results[i].temp;
+            var maxTemp = results[i].max_temp;
+            var minTemp = results[i].min_temp;
             
 
             var weatherIcon = results[i].weather.icon;
             
 
-            var convertedDate = moment(day, "YYYY-MM-DD").format("dddd");
+            var convertedDate = moment(day, "YYYY-MM-DD").format("dd");
             dayWeather.append(convertedDate);
 
 
@@ -49,7 +59,8 @@ function displayWeather() {
             icon.attr("src", "https://www.weatherbit.io/static/img/icons/" + weatherIcon + ".png")
             dayWeather.append(icon);
 
-            dayWeather.append(Math.floor(temp) + " °F  ");
+            dayWeather.append(Math.floor(maxTemp) + "° ");
+            dayWeather.append(Math.floor(minTemp) + "° ");
 
             weatherDisplay.append(dayWeather);
 
