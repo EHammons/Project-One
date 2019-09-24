@@ -93,6 +93,7 @@ function findPlaces(cityCoords) {
                 var site = response.result.website;
                 var placeName = $("#place-name-" + j);
                 placeName.attr("href", site);
+                placeName.attr("target", "_blank");
                 
             });
         })(j);
