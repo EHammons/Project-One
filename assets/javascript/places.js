@@ -25,12 +25,13 @@ function findPlaces(cityCoords) {
             var results = response.results;
             console.log(response);
             // console.log(JSON.stringify(response.results[0]));
-
+            var placeIDs = [];
             var resultsLength = maxPlaces(results);
             for (var i = 0; i < resultsLength; i++) {
             //   console.log(results[i].name);
             //   console.log(results[i].rating);
               // TODO: update formatting for index.html
+              placeIDs.push(results[i].place_id);
               var nameDiv = $("<div>");
               var label = $("<span>");
               label.addClass("label");
@@ -57,10 +58,14 @@ function findPlaces(cityCoords) {
               placeDiv.append(ratingPriceDiv);
               $("#place-list").append(placeDiv);
             }        
-            
-            pinPlaces(results);      
+            pinPlaces(results);  
+            addURLs(placeIDs);    
       });
   };
+
+  addURLs(placeIDs) {
+      
+  }
 
   // convert our price value to a dolar amount, $/$$/$$$ etc
   function priceToDollar(price) {
