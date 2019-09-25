@@ -12,21 +12,23 @@ function displayWeather(cityName) {
         var stringArr = string.split(" ");
         var result = "";
         for (var i = 0; i < stringArr.length; i++) {
-            console.log(stringArr[i]);
             var word = stringArr[i].charAt(0).toUpperCase() + stringArr[i].slice(1);
-            console.log(word);
             result += word + " ";
-            console.log(result);
         }
         return result.trim();
     }
     cityName = capitalizeFirstLetter(cityName);
     
     $("#city-name").text(cityName);
-    console.log(cityName);
-                     
     
-    var queryUrl = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + cityName + "&key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5";
+                     
+    var queryUrl = "https://api.weatherbit.io/v2.0/forecast/daily?key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5&";
+
+    if (isNaN(cityName)) {
+        queryUrl += "city=" + cityName;
+    } else {
+        queryUrl += "postal_code=" + cityName;
+    }
 
 
     $.ajax({
@@ -34,7 +36,7 @@ function displayWeather(cityName) {
         method: "GET"
     }).then(function (response) {
         var results = response.data;
-        console.log(results)
+        
         
 
         var weatherDisplay = $("#weather-display");
