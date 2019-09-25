@@ -38,16 +38,21 @@ function findPlaces(cityCoords) {
               nameDiv.append(label, place);
               var ratingDiv = $("<div>");
               if (results[i].rating !== undefined) {
+                //pull rating from results and calculate percentage out of 5 stars//
                 var placeRatings = results[i].rating;
                 var starTotal = 5;
                 var starPercentage = (placeRatings/starTotal) * 100;
                 var starPercentageRounded = (Math.round(starPercentage));
+                //create a new div to hold both empty and filled stars//
                 var stars = $("<div>");
                 stars.addClass("stars-outer");
                 var place = $("<div>");
                 place.addClass("stars-inner");
+                //add the filled stars over the empty stars//
                 $(stars).append(place);
+                //update style width of filled stars (percentage) to cover empty stars//
                 $(place).width(starPercentageRounded+"%");
+                //put both sets of stars onto the page//
                 ratingDiv.append(stars);
               }
               var priceDiv = $("<div>");
