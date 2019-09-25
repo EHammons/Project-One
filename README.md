@@ -31,6 +31,7 @@ Created for a coding class project, all group members have collaborated to creat
 
 ## Screenshots
 ![Screenshot](./assets/images/Project_One.jpg)
+![Screenshot](./assets/images/deployed.png)
 
 ## Technologies
 * Weatherbit API - v2.0
