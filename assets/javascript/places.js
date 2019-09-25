@@ -112,7 +112,8 @@ function findPlaces(cityCoords) {
 
 // dropdown listener for category
 $(document).ready(function() { 
-  $("#dropdown-list a").on("click", function() {
+  $("#dropdown-list a").on("click", function(event) {
+      event.preventDefault();
       var val = $(this).attr("value");
       var text = $(this).text();
       $("#dropdownMenuButton").val(val);
@@ -120,21 +121,21 @@ $(document).ready(function() {
   });
 
   $(".city-carousel").on("click", function(event) {
-    console.log($(this));
-    searchCity( $(this).attr("city-name") );
+    var city = $(this).attr("city-name");
+    $("#search-bar").val(city);
+    searchCity(city);
   });
-
-  
 });
 
 
 // pick a random city to display on page load
 function randomCity() {
     var cities = ["Hong Kong", "Paris", "Sydney", "Tokyo", "New York City"];
-
     return cities[Math.floor(Math.random() * 5)];
 }
 
 $(window).on("load", function() {
-    searchCity(randomCity());
+    var city = randomCity();
+    $("#search-bar").val(city);
+    searchCity(city);
 });
