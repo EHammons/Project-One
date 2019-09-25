@@ -1,5 +1,7 @@
 var apiKey = "AIzaSyADAEzhWG-Zr1lJeCo5mJmk6Oh_JPIDjUI"
 
+
+// the meat of our app, find and display all the places for a given lat/lng
 function findPlaces(cityCoords) {
     // In this case, the "this" keyword refers to the button that was clicked
 
@@ -26,6 +28,9 @@ function findPlaces(cityCoords) {
             console.log(results);
             var placeIDs = {};
             var resultsLength = maxPlaces(results);
+
+            // use jquery to display each place on the page in #places-list
+            // TODO: pretty up, this is difficult to understand
             for (var i = 0; i < resultsLength; i++) {
               placeIDs[i + 1] = results[i].place_id;
               var nameDiv = $("<div>");
@@ -62,6 +67,8 @@ function findPlaces(cityCoords) {
                   priceDiv.append(price);
               }
               var placeDiv = $("<div>");
+
+              // bootstrap grid layout, change the column length here instead of margins 
               var row = $("<div class='row'>");
               var nameCol = $("<div class='col-md-7'>");
               nameCol.append(nameDiv);
@@ -117,8 +124,9 @@ function findPlaces(cityCoords) {
       return prices;
   }
 
-// dropdown listener for category
+
 $(document).ready(function() { 
+    // dropdown listener to set category
   $("#dropdown-list a").on("click", function(event) {
       event.preventDefault();
       var val = $(this).attr("value");
@@ -127,6 +135,7 @@ $(document).ready(function() {
       $("#dropdownMenuButton").text(text);
   });
 
+  // enable search by clicking 'Explore City' on the carousel
   $(".city-carousel").on("click", function(event) {
     var city = $(this).attr("city-name");
     $("#search-bar").val(city);
