@@ -30,7 +30,7 @@ Created for a coding class project, all group members have collaborated to creat
 * Christopher: Make basic HTML Wireframe
 
 ## Screenshots
-![Screenshot](./img/Project_One.jpg)
+![Screenshot](./assets/images/Project_One.jpg)
 
 ## Technologies
 * Weatherbit API - v2.0

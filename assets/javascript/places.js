@@ -6,14 +6,12 @@ function findPlaces(cityCoords) {
     $("#search-bar").empty();
     var cityCoords = cityCoords;
     var type = $("#dropdownMenuButton").val();
-    console.log(type);
     // default to restaurant
     if (type === "") {
         type = "restaurant";
     }
     var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + cityCoords + "&radius=1500&type=" + type + "&key=" + apiKey;
-    
-    console.log(queryURL);
+  
 
     // Performing our AJAX GET request
     $.ajax({
@@ -25,14 +23,9 @@ function findPlaces(cityCoords) {
           $("#place-list").empty();
             // Storing an array of results in the results variable
             var results = response.results;
-            console.log(response);
-            // console.log(JSON.stringify(response.results[0]));
             var placeIDs = {};
             var resultsLength = maxPlaces(results);
             for (var i = 0; i < resultsLength; i++) {
-            //   console.log(results[i].name);
-            //   console.log(results[i].rating);
-              // TODO: update formatting for index.html
               placeIDs[i + 1] = results[i].place_id;
               var nameDiv = $("<div>");
               var label = $("<span>");
@@ -119,7 +112,8 @@ function findPlaces(cityCoords) {
 
 // dropdown listener for category
 $(document).ready(function() { 
-  $("#dropdown-list a").on("click", function() {
+  $("#dropdown-list a").on("click", function(event) {
+      event.preventDefault();
       var val = $(this).attr("value");
       var text = $(this).text();
       $("#dropdownMenuButton").val(val);
@@ -127,18 +121,16 @@ $(document).ready(function() {
   });
 
   $(".city-carousel").on("click", function(event) {
-    console.log($(this));
-    searchCity( $(this).attr("city-name") );
+    var city = $(this).attr("city-name");
+    $("#search-bar").val(city);
+    searchCity(city);
   });
-
-  
 });
 
 
 // pick a random city to display on page load
 function randomCity() {
     var cities = ["Hong Kong", "Paris", "Sydney", "Tokyo", "New York City"];
-
     return cities[Math.floor(Math.random() * 5)];
 }
 
