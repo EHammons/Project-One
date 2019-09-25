@@ -1,3 +1,4 @@
+//create empty variables so they can be accessed by every function//
 var map;
 var service;
 var infowindow;
@@ -51,10 +52,13 @@ function geocodeLatLng(address) {
 }
 
 function displayCity(lat, lng) {
+    //to display map before pins are placed//
     var cityLat = parseFloat(lat);
     var cityLng = parseFloat(lng);
     var city = new google.maps.LatLng(cityLat, cityLng);
+    //declare bounds value to be available later for pins//
     bounds = new google.maps.LatLngBounds();
+    //center map on city without default controls other than zoom//
     map = new google.maps.Map(document.getElementById("map"), {
         center: city,
         zoom: 14.5,
@@ -75,14 +79,18 @@ function createMarker(place, number) {
     var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location,
+        //set text color to white for better contrast on red markers//
         label: {text: String(number), color: "white"}
     });
+    //after markers are created, the map window will resize to include all markers//
     bounds.extend(marker.position);
     map.fitBounds(bounds);
 
     google.maps.event.addListener(marker, "click", function() {
+        //when marker is clicked, display place name and location in bubble//
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.vicinity + '</div>');
         infowindow.open(map, this);
+        //set window to the marker as center on the map//
         map.setCenter(marker.getPosition());
         var label = marker.label.text;
         selectPlace(label);
