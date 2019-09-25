@@ -42,10 +42,10 @@ function geocodeLatLng(address) {
             findPlaces(latlng);
             return latlng;
         } else {
-            window.alert('No results found');
+            console.log('No results found');
         }
     } else {
-        window.alert('Geocoder failed due to: ' + status);
+        console.log('Geocoder failed due to: ' + status);
     }
     });
 }
