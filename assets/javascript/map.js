@@ -7,11 +7,17 @@ var bounds;
 
 let MAX_PLACES = 5;
 
+
+// callback function for the google map API. Initialize the map related fields 
+// but has the option to do other things in the future that depend on the map
+// loading
 function initMap() {
     init();
-    // searchCity(randomCity());
 }
 
+
+// initialize and place the map
+// initialize the geocoder
 function init() {
     geocoder = new google.maps.Geocoder;
     // TODO: change to selected preview city instead of Austin
@@ -31,6 +37,8 @@ function init() {
     });  
 }
 
+// turn an address or city to a lat/lng
+// calls the findPlaces function
 function geocodeLatLng(address) {
     geocoder.geocode({'address': address}, function(results, status) {
     if (status === 'OK') {
@@ -68,7 +76,7 @@ function displayCity(lat, lng) {
     });
 }
 
-
+// pins each place on the map
 function pinPlaces(places) {
     var placesLength = maxPlaces(places);
     for (var i = 0; i < placesLength; i++) {
@@ -76,6 +84,7 @@ function pinPlaces(places) {
     }
 }
 
+// creates the actual pin
 function createMarker(place, number) {
     var marker = new google.maps.Marker({
         map: map,
@@ -98,17 +107,21 @@ function createMarker(place, number) {
     });
 }
 
+// function to explicitly search for a city
+// by city name or zip code
 function searchCity(cityName) {
     displayWeather(cityName);
     geocodeLatLng(cityName);
 }
 
+// when search is clicked search and display results
 $("#search-button").on("click", function(event) {
     event.preventDefault();
     var cityName = $("#search-bar").val();
     geocodeLatLng(cityName);
 });
 
+// returns whichever is less to avoid out of range errors
 function maxPlaces(places) {
     if (places.length < MAX_PLACES) {
         return places.length;
@@ -116,13 +129,14 @@ function maxPlaces(places) {
     return MAX_PLACES;
 }
 
+// highlights the place associated with the selected pin
 function selectPlace(placeNumber) {
     clearPlacesBackground();
     $("#place-" + placeNumber).addClass("selected-place");  
 }
 
-function clearPlacesBackground() {
-    
+// clears all highlighted places
+function clearPlacesBackground() {   
     for (var i = 1; i <= MAX_PLACES; i++) {
         var selectedPlace = $("#place-" + i);
         if (selectedPlace !== undefined) {
