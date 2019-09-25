@@ -18,7 +18,7 @@ function displayWeather(cityName) {
             result += word + " ";
             console.log(result);
         }
-        return result;
+        return result.trim();
     }
     cityName = capitalizeFirstLetter(cityName);
     
