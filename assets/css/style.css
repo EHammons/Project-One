@@ -111,17 +111,6 @@ img {
     color: black;
 }
 
-/* 
-@media screen and (max-width: 400px) {
-    #search-bar {
-        width: 100%;
-        margin: 0 auto;
-    }
-    #search-button {
-        width: 100%;
-        margin: 0 auto;
-    }
-}  */
 .stars-outer {
     display: inline-block;
     position: relative;
@@ -146,3 +135,8 @@ img {
     color: #f8ce0b;
 }
 
+@media screen and (max-width: 400px) {
+    .day-weather {
+        font-size: 12px;
+    }
+} 
