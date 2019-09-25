@@ -18,14 +18,20 @@ function displayWeather(cityName) {
             result += word + " ";
             console.log(result);
         }
-        return result;
+        return result.trim();
     }
     cityName = capitalizeFirstLetter(cityName);
     
     $("#city-name").text(cityName);
 
     
-    var queryUrl = "https://api.weatherbit.io/v2.0/forecast/daily?city=" + cityName + "&key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5";
+    var queryUrl = "https://api.weatherbit.io/v2.0/forecast/daily?key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5&";
+
+    if (isNaN(cityName)) {
+        queryUrl += "city=" + cityName;
+    } else {
+        queryUrl += "postal_code=" + cityName;
+    }
 
 
     $.ajax({
