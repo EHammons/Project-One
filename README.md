@@ -39,6 +39,8 @@ Created for a coding class project, all group members have collaborated to creat
 * Google Maps API
 * jQuery
 * JavaScript
+* HTML5
+* CSS3
 
 ## Setup
 Slide presentation: https://docs.google.com/presentation/d/1YK1e6_B67bf-K0BaA4KKIPfMjGx60u9iZOIXU8m0-Vg/edit?usp=sharing
