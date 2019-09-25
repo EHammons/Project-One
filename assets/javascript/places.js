@@ -135,5 +135,7 @@ function randomCity() {
 }
 
 $(window).on("load", function() {
-    searchCity(randomCity());
+    var city = randomCity();
+    $("#search-bar").val(city);
+    searchCity(city);
 });
