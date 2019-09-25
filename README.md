@@ -44,7 +44,41 @@ Deployed at: https://ehammons.github.io/whereabounds/
 
 ## Code Examples
 Show examples of usage:
-`put-your-code-here`
+
+    if (results[i].rating !== undefined) {
+        var placeRatings = results[i].rating;
+        var starTotal = 5;
+        var starPercentage = (placeRatings/starTotal) * 100;
+        var starPercentageRounded = (Math.round(starPercentage));
+        var stars = $("<div>");
+        stars.addClass("stars-outer");
+        var place = $("<div>");
+        place.addClass("stars-inner");
+        $(stars).append(place);
+        $(place).width(starPercentageRounded+"%");
+        ratingDiv.append(stars);
+    }
+
+    function geocodeLatLng(address) {
+    geocoder.geocode({'address': address}, function(results, status) {
+    if (status === 'OK') {
+        if (results[0]) {
+            var lat = results[0].geometry.location.lat();
+            var lng = results[0].geometry.location.lng();
+            displayCity(lat, lng);
+            var latlng = lat + "," + lng
+            // here is where we can call other functions, it's the 'good' path
+            findPlaces(latlng);
+            return latlng;
+        } else {
+            console.log('No results found');
+        }
+        } else {
+            console.log('Geocoder failed due to: ' + status);
+        }
+        });
+    }
+
 
 ## Features
 List of features ready and TODOs for future development
