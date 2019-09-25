@@ -37,6 +37,7 @@ function geocodeLatLng(address) {
             var lat = results[0].geometry.location.lat();
             var lng = results[0].geometry.location.lng();
             displayCity(lat, lng);
+            console.log(displayCity);
             var latlng = lat + "," + lng
             // here is where we can call other functions, it's the 'good' path
             findPlaces(latlng);

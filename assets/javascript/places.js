@@ -12,7 +12,7 @@ function findPlaces(cityCoords) {
     }
     var queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + cityCoords + "&radius=1500&type=" + type + "&key=" + apiKey;
   
-
+    console.log(queryURL);
     // Performing our AJAX GET request
     $.ajax({
       url: queryURL,
@@ -23,6 +23,7 @@ function findPlaces(cityCoords) {
           $("#place-list").empty();
             // Storing an array of results in the results variable
             var results = response.results;
+            console.log(results);
             var placeIDs = {};
             var resultsLength = maxPlaces(results);
             for (var i = 0; i < resultsLength; i++) {
@@ -72,6 +73,7 @@ function findPlaces(cityCoords) {
               $("#place-list").append(placeDiv);
             }        
             pinPlaces(results);  
+            console.log(results);
             
             // add the url of each place given its placeID. this requires a separate api call
             addURLs(placeIDs);    
