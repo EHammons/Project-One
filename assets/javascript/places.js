@@ -111,7 +111,8 @@ function findPlaces(cityCoords) {
 
 // dropdown listener for category
 $(document).ready(function() { 
-  $("#dropdown-list a").on("click", function() {
+  $("#dropdown-list a").on("click", function(event) {
+      event.preventDefault();
       var val = $(this).attr("value");
       var text = $(this).text();
       $("#dropdownMenuButton").val(val);
