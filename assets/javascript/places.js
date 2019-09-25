@@ -120,18 +120,16 @@ $(document).ready(function() {
   });
 
   $(".city-carousel").on("click", function(event) {
-    console.log($(this));
-    searchCity( $(this).attr("city-name") );
+    var city = $(this).attr("city-name");
+    $("#search-bar").val(city);
+    searchCity(city);
   });
-
-  
 });
 
 
 // pick a random city to display on page load
 function randomCity() {
     var cities = ["Hong Kong", "Paris", "Sydney", "Tokyo", "New York City"];
-
     return cities[Math.floor(Math.random() * 5)];
 }
 
