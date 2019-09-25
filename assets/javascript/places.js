@@ -37,10 +37,17 @@ function findPlaces(cityCoords) {
               nameDiv.append(label, place);
               var ratingDiv = $("<div>");
               if (results[i].rating !== undefined) {
-                var rating = $("<span>").text(results[i].rating + " ");
-                rating.addClass("rating");
-                ratingDiv.append(rating);
-                
+                var placeRatings = results[i].rating;
+                var starTotal = 5;
+                var starPercentage = (placeRatings/starTotal) * 100;
+                var starPercentageRounded = (Math.round(starPercentage));
+                var stars = $("<div>");
+                stars.addClass("stars-outer");
+                var place = $("<div>");
+                place.addClass("stars-inner");
+                $(stars).append(place);
+                $(place).width(starPercentageRounded+"%");
+                ratingDiv.append(stars);
               }
               var priceDiv = $("<div>");
               if (results[i].price_level !== undefined) {
@@ -50,10 +57,10 @@ function findPlaces(cityCoords) {
               }
               var placeDiv = $("<div>");
               var row = $("<div class='row'>");
-              var nameCol = $("<div class='col-md-8'>");
+              var nameCol = $("<div class='col-md-7'>");
               nameCol.append(nameDiv);
               row.append(nameCol);
-              var ratingCol = $("<div class='col-md-2'>");
+              var ratingCol = $("<div class='col-md-3'>");
               ratingCol.append(ratingDiv);
               row.append(ratingCol);
               var priceCol = $("<div class='col-md-2'>");
