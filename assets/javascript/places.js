@@ -39,7 +39,7 @@ function findPlaces(cityCoords) {
               if (results[i].rating !== undefined) {
                 var rating = $("<span>").text(results[i].rating + " ");
                 rating.addClass("rating");
-                ratingPriceDiv.append(rating);
+                ratingDiv.append(rating);
                 
               }
               var priceDiv = $("<div>");
