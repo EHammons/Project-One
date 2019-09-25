@@ -84,7 +84,7 @@ Show examples of usage:
 List of features ready and TODOs for future development
 * User input city results in:
 * Five day weather forecast
-* FIve places to visit
+* Five places to visit
 
 ## Status
 Project is: _finished_ and submitted for Project 1.
