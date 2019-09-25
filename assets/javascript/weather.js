@@ -20,6 +20,7 @@ function displayWeather(cityName) {
     cityName = capitalizeFirstLetter(cityName);
     
     $("#city-name").text(cityName);
+    console.log(cityName);
     
                      
     var queryUrl = "https://api.weatherbit.io/v2.0/forecast/daily?key=7169e5ccc01a4702a01e93ee6982101a&units=I&days=5&";
@@ -29,6 +30,7 @@ function displayWeather(cityName) {
     } else {
         queryUrl += "postal_code=" + cityName;
     }
+    console.log(queryUrl);
 
 
     $.ajax({
@@ -36,6 +38,7 @@ function displayWeather(cityName) {
         method: "GET"
     }).then(function (response) {
         var results = response.data;
+        console.log(results);
         
         
 
